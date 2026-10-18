@@ -5819,4 +5819,160 @@ window.__hm = { get G() { return G; }, get Net() { return Net; }, ui, act, rende
 })();
 </script>
 
-</body></html>
+<style>/* ============ Hollowmoon AAA cinematic polish (override layer) ============ */
+/* Character art (.ava) and spell/skill icon SVGs are intentionally untouched. */
+
+/* --- global atmosphere: deep vignette + film grain over everything --- */
+body::after {
+  content: ''; position: fixed; inset: 0; z-index: 999; pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(4, 2, 14, .55) 100%);
+}
+body::before {
+  content: ''; position: fixed; inset: -50%; z-index: 998; pointer-events: none; opacity: .05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.2 -.5'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
+  animation: hmGrain 1.2s steps(4) infinite;
+}
+@keyframes hmGrain { 0%{transform:translate(0,0)} 25%{transform:translate(-2%,3%)} 50%{transform:translate(3%,-2%)} 75%{transform:translate(-3%,-3%)} 100%{transform:translate(2%,2%)} }
+
+/* --- lobby / menu screens --- */
+.screen {
+  background:
+    radial-gradient(70% 40% at 50% -6%, rgba(227,184,102,.14), transparent 70%),
+    radial-gradient(90% 55% at 50% 12%, #4133a0, #150f2c 70%), var(--abyss) !important;
+}
+.panel {
+  background: linear-gradient(180deg, rgba(44,33,84,.94), rgba(26,18,54,.96)) !important;
+  border-radius: 24px !important;
+  box-shadow:
+    inset 0 1px 0 rgba(245,212,143,.22),
+    inset 0 0 0 1px var(--rim),
+    0 18px 50px rgba(0,0,0,.55),
+    0 0 60px rgba(106,124,255,.08) !important;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.panel input[type=text], .panel select {
+  background: rgba(10,6,26,.85) !important;
+  box-shadow: inset 0 0 0 1px var(--rim), inset 0 2px 8px rgba(0,0,0,.5) !important;
+  transition: box-shadow .25s ease;
+}
+.panel input[type=text]:focus, .panel select:focus {
+  box-shadow: inset 0 0 0 2px var(--brass), 0 0 18px rgba(227,184,102,.25) !important;
+  outline: none;
+}
+
+/* --- buttons: weighty, lit from above --- */
+.btn {
+  letter-spacing: .02em;
+  transition: transform .12s ease, box-shadow .25s ease, filter .25s ease;
+}
+.btn:not(:disabled):hover { filter: brightness(1.12); }
+.btn.primary {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.55),
+    0 3px 0 #7a5420,
+    0 8px 24px rgba(227,184,102,.4),
+    0 0 30px rgba(227,184,102,.18) !important;
+}
+.seg button { transition: box-shadow .25s ease, background .25s ease, transform .12s ease; }
+.seg button[aria-pressed=true] {
+  background: linear-gradient(180deg, rgba(227,184,102,.2), rgba(227,184,102,.08)) !important;
+  box-shadow: inset 0 0 0 2px var(--brass), 0 0 20px rgba(227,184,102,.28) !important;
+}
+
+/* --- icon buttons: glass + brass --- */
+.ib {
+  background: linear-gradient(180deg, rgba(52,40,96,.9), rgba(28,20,58,.95)) !important;
+  box-shadow: inset 0 1px 0 rgba(245,212,143,.18), inset 0 0 0 1px var(--rim), 0 4px 12px rgba(0,0,0,.4) !important;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  transition: transform .12s ease, box-shadow .25s ease;
+}
+.ib.send {
+  box-shadow: 0 3px 0 #6a4718, 0 0 22px rgba(227,184,102,.5), 0 6px 16px rgba(0,0,0,.4) !important;
+}
+
+/* --- phase banner / timer: glowing stage marquee --- */
+.pphase {
+  background: linear-gradient(180deg, rgba(52,39,100,.97), rgba(30,21,62,.97)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(245,212,143,.2),
+    inset 0 0 0 1px var(--rim),
+    0 6px 20px rgba(0,0,0,.45),
+    0 0 26px color-mix(in srgb, var(--ph) 18%, transparent) !important;
+}
+.pphase h2 { text-shadow: 0 0 14px color-mix(in srgb, var(--ph) 55%, transparent), 0 2px 4px rgba(0,0,0,.6); }
+.pphase .gl { filter: drop-shadow(0 0 10px var(--ph)) !important; }
+.pphase .prog i { box-shadow: 0 0 12px var(--ph), 0 0 4px var(--ph) !important; }
+
+/* --- the village grid: framed like a masterpiece --- */
+.grid {
+  gap: 2px !important;
+  background: linear-gradient(160deg, rgba(227,184,102,.4), rgba(227,184,102,.1) 40%, rgba(227,184,102,.35)) !important;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(227,184,102,.35),
+    0 12px 40px rgba(0,0,0,.6),
+    0 0 80px color-mix(in srgb, var(--glow) 14%, transparent) !important;
+}
+.card { transition: filter .5s, transform .16s cubic-bezier(.3,1.6,.5,1), box-shadow .3s ease; }
+.card:active { transform: scale(.96); }
+.card .tag {
+  background: linear-gradient(180deg, rgba(20,14,42,.6), rgba(14,9,32,.96)) !important;
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+.card.speaking {
+  box-shadow: inset 0 0 0 2px var(--brass-hi), inset 0 0 26px rgba(245,212,143,.55), 0 0 24px rgba(245,212,143,.35) !important;
+  z-index: 5;
+}
+.card.you { box-shadow: inset 0 0 0 2px var(--brass), inset 0 0 20px rgba(227,184,102,.3) !important; }
+
+/* --- chat: floating glass bubbles --- */
+.chat {
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(20,14,42,.55), rgba(12,8,28,.75));
+  box-shadow: inset 0 0 0 1px rgba(227,184,102,.14);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.msg .bd {
+  box-shadow: 0 2px 10px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+}
+.chan {
+  background: linear-gradient(180deg, rgba(44,33,84,.95), rgba(28,20,58,.95)) !important;
+  box-shadow: inset 0 0 0 1px var(--rim), 0 2px 8px rgba(0,0,0,.35) !important;
+}
+
+/* --- input bar --- */
+.bar input {
+  background: rgba(10,6,26,.85) !important;
+  box-shadow: inset 0 0 0 1px var(--rim), inset 0 2px 8px rgba(0,0,0,.5) !important;
+  transition: box-shadow .25s ease;
+}
+.bar input:focus { box-shadow: inset 0 0 0 2px var(--brass), 0 0 18px rgba(227,184,102,.22) !important; outline: none; }
+
+/* --- trays, sheets, reveals: cinematic cards --- */
+.tray, .sheetcard {
+  background: linear-gradient(180deg, rgba(44,33,84,.96), rgba(24,16,50,.98)) !important;
+  box-shadow: inset 0 1px 0 rgba(245,212,143,.2), inset 0 0 0 1px var(--rim), 0 20px 60px rgba(0,0,0,.65) !important;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.reveal {
+  background: linear-gradient(180deg, rgba(34,24,70,.92), rgba(16,10,38,.96)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(245,212,143,.25),
+    inset 0 0 0 1px var(--rim),
+    0 24px 70px rgba(0,0,0,.7),
+    0 0 90px rgba(227,184,102,.12) !important;
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.reveal h3 { text-shadow: 0 0 24px rgba(245,212,143,.45), 0 3px 8px rgba(0,0,0,.7); }
+
+/* --- toast --- */
+.toast {
+  box-shadow: inset 0 0 0 1px var(--rim), 0 10px 30px rgba(0,0,0,.55), 0 0 30px rgba(227,184,102,.15) !important;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+
+/* --- smooth everything --- */
+.msg, .card .vb, .tray, .toast { will-change: transform; }
+</style></body></html>
