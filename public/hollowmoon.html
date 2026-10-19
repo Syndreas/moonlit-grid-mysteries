@@ -1226,6 +1226,44 @@ details.fold summary { font-family: var(--f-ui); font-weight: 700; font-size: 15
 @keyframes picglow { 0%, 100% { filter: drop-shadow(0 0 1.5px var(--brass-hi)) drop-shadow(0 0 4px color-mix(in srgb, var(--sc) 70%, transparent)); } 50% { filter: drop-shadow(0 0 2px var(--brass-hi)) drop-shadow(0 0 7px color-mix(in srgb, var(--sc) 90%, transparent)); } }
 .entglow.ent-necro { background: linear-gradient(90deg, rgba(170, 90, 255, .55), rgba(170, 90, 255, .16) 9%, transparent 22%, transparent 78%, rgba(170, 90, 255, .16) 91%, rgba(170, 90, 255, .55)); box-shadow: inset 14px 0 30px -6px rgba(200, 140, 255, .7), inset -14px 0 30px -6px rgba(200, 140, 255, .7); }
 </style>
+<style id="aaa-start-look">
+/* ===== AAA start screen ===== */
+.title h1{background:linear-gradient(180deg,#fff6d8 0%,var(--gold-hi,#ffe39a) 30%,var(--gold,#e0b25a) 58%,var(--gold-deep,#8a5a1c) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;animation:hmTitle 6s ease-in-out infinite;position:relative}
+@keyframes hmTitle{0%,100%{filter:drop-shadow(0 2px 6px rgba(0,0,0,.8)) drop-shadow(0 0 22px color-mix(in oklab,var(--gold) 30%,transparent))}50%{filter:drop-shadow(0 2px 6px rgba(0,0,0,.8)) drop-shadow(0 0 38px color-mix(in oklab,var(--gold) 55%,transparent))}}
+.title::after{content:"";display:block;width:min(70%,260px);height:12px;margin:10px auto 0;background:radial-gradient(circle at 50% 50%,var(--gold) 0 3px,transparent 4px),linear-gradient(90deg,transparent,var(--gold) 30%,var(--gold) 70%,transparent) center/100% 1px no-repeat;opacity:.85}
+.title p{font-style:italic;letter-spacing:.02em}
+.lobby .panel{position:relative;border:1px solid transparent;background:linear-gradient(180deg,color-mix(in oklab,var(--night-2) 88%,transparent),color-mix(in oklab,var(--night) 94%,transparent)) padding-box,linear-gradient(160deg,var(--gold-hi,#ffe39a),var(--gold-deep,#8a5a1c) 35%,color-mix(in oklab,var(--gold) 30%,transparent) 60%,var(--gold) 100%) border-box;box-shadow:inset 0 1px 0 color-mix(in oklab,var(--gold) 30%,transparent),inset 0 0 40px rgba(0,0,0,.45),0 18px 40px rgba(0,0,0,.55),0 0 24px color-mix(in oklab,var(--arcane,#8a5cff) 18%,transparent);backdrop-filter:blur(6px)}
+.lobby .panel::before,.lobby .panel::after{content:"";position:absolute;width:18px;height:18px;border:2px solid var(--gold);pointer-events:none;opacity:.9}
+.lobby .panel::before{top:6px;left:6px;border-right:0;border-bottom:0;border-top-left-radius:6px}
+.lobby .panel::after{bottom:6px;right:6px;border-left:0;border-top:0;border-bottom-right-radius:6px}
+.lobby .btn.primary{position:relative;overflow:hidden;letter-spacing:.14em;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -3px 0 rgba(0,0,0,.25),0 0 0 1px var(--gold-deep),0 10px 26px color-mix(in oklab,var(--gold) 35%,transparent)}
+.lobby .btn.primary::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);animation:hmShine 4.5s ease-in-out infinite}
+@keyframes hmShine{0%,60%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+.lobby details.fold{transition:box-shadow .25s,transform .25s}
+.lobby details.fold[open]{box-shadow:0 0 0 1px var(--gold),0 0 22px color-mix(in oklab,var(--gold) 25%,transparent)}
+.lobby details.fold summary{color:var(--gold-hi,#ffe39a)}
+.youcard{animation:hmAura 3.6s ease-in-out infinite}
+@keyframes hmAura{0%,100%{box-shadow:inset 0 0 0 1px rgba(8,4,20,.7),0 0 10px color-mix(in oklab,var(--gold) 25%,transparent),0 4px 10px rgba(0,0,0,.45)}50%{box-shadow:inset 0 0 0 1px rgba(8,4,20,.7),0 0 22px color-mix(in oklab,var(--gold) 50%,transparent),0 4px 10px rgba(0,0,0,.45)}}
+.youedit{animation:hmPulse 2.4s ease-in-out infinite}
+@keyframes hmPulse{50%{transform:scale(1.1)}}
+.panel input[type=text]:focus,.panel select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in oklab,var(--gold) 22%,transparent)}
+/* ===== AAA character customisation ===== */
+.lookov h2{background:linear-gradient(180deg,#fff6d8,var(--gold) 55%,var(--gold-deep,#8a5a1c));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px color-mix(in oklab,var(--gold) 40%,transparent))}
+.lookstage{position:relative;isolation:isolate}
+.lookstage::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--gold) 26%,transparent) 0%,color-mix(in oklab,var(--arcane,#8a5cff) 18%,transparent) 38%,transparent 66%);animation:hmBreath 5s ease-in-out infinite}
+.lookstage::after{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:128%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:conic-gradient(from 0deg,transparent 0 20%,color-mix(in oklab,var(--gold) 45%,transparent) 25%,transparent 32% 70%,color-mix(in oklab,var(--gold) 35%,transparent) 75%,transparent 82%);-webkit-mask:radial-gradient(circle,transparent 62%,#000 63% 64%,transparent 65%);mask:radial-gradient(circle,transparent 62%,#000 63% 64%,transparent 65%);animation:hmSpin 14s linear infinite}
+@keyframes hmSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes hmBreath{50%{opacity:.6}}
+.lookstage .lookcard{box-shadow:inset 0 0 0 1px rgba(8,4,20,.7),0 0 0 1px var(--gold-deep,#8a5a1c),0 0 30px color-mix(in oklab,var(--gold) 35%,transparent),0 24px 40px rgba(0,0,0,.7)}
+.gbtn{transition:transform .2s,box-shadow .2s}
+.ltabs{border-bottom-color:color-mix(in oklab,var(--gold) 35%,transparent)}
+.ltab{transition:color .2s}
+.ltab.on{text-shadow:0 0 12px color-mix(in oklab,var(--gold) 60%,transparent);box-shadow:0 6px 12px -8px var(--gold)}
+.ltile{transition:border-color .2s,box-shadow .2s,background .2s;box-shadow:inset 0 1px 0 color-mix(in oklab,var(--gold) 15%,transparent),0 4px 10px rgba(0,0,0,.35)}
+.ltile.on{background:radial-gradient(circle at 50% 35%,color-mix(in oklab,var(--gold) 22%,var(--night-3,#2a1f4a)),var(--night))}
+.tone{transition:box-shadow .2s}
+@media (prefers-reduced-motion:reduce){.title h1,.youcard,.youedit,.lookstage::before,.lookstage::after,.lobby .btn.primary::after{animation:none}}
+</style>
 </head>
 <body>
 <div class="backdrop" aria-hidden="true"><i class="bgimg"></i><i class="bgtint"></i><i class="bgshade"></i><div class="motes"><i style="--x:0%;--y:0%;--d:0s"></i><i style="--x:37%;--y:13%;--d:.45s"></i><i style="--x:74%;--y:26%;--d:.9s"></i><i style="--x:11%;--y:39%;--d:1.35s"></i><i style="--x:48%;--y:12%;--d:1.8s"></i><i style="--x:85%;--y:25%;--d:2.25s"></i><i style="--x:22%;--y:38%;--d:2.7s"></i><i style="--x:59%;--y:11%;--d:3.15s"></i><i style="--x:96%;--y:24%;--d:3.6s"></i><i style="--x:33%;--y:37%;--d:4.05s"></i><i style="--x:70%;--y:10%;--d:4.5s"></i><i style="--x:7%;--y:23%;--d:4.95s"></i><i style="--x:44%;--y:36%;--d:5.4s"></i><i style="--x:81%;--y:9%;--d:5.85s"></i></div></div>
